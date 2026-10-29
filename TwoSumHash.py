@@ -1,15 +1,18 @@
+n = int(input("Enter the number of elements: "))
+nums = list(map(int, input("Enter the numbers: ").split()))
+target = int(input("Enter the target: "))
 
-n = int(input("Enter number of elements: "))
-prices = list(map(int, input("Enter the prices: ").split()))
-target = int(input("Enter target amount: "))
-
-seen = {}
+found = False
 
 for i in range(n):
-    needed = target - prices[i]
+    for j in range(i + 1, n):
+        if nums[i] + nums[j] == target:
+            print("Indices:", i, j)
+            found = True
+            break
 
-    if needed in seen:
-        print("Indices:", [seen[needed], i])
+    if found:
         break
 
-    seen[prices[i]] = i
+if not found:
+    print("No solution found")
