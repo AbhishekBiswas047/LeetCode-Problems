@@ -1,0 +1,21 @@
+
+n = int(input("Enter number of elements: "))
+nums = list(map(int, input("Enter descending order numbers: ").split()))
+target = int(input("Enter target: "))
+
+left = 0
+right = n - 1
+result = -1
+
+while left <= right:
+    mid = (left + right) // 2
+
+    if nums[mid] == target:
+        result = mid
+        break
+    elif target < nums[mid]:
+        left = mid + 1
+    else:
+        right = mid - 1
+
+print("Index:", result)
